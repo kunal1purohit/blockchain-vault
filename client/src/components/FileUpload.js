@@ -16,13 +16,18 @@ const FileUpload = ({ contract, account, provider }) => {
           url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
           data: formData,
           headers: {
-            pinata_api_key: `Enter Your Key`,
-            pinata_secret_api_key: `Enter Your Secret Key`,
+            pinata_api_key: `
+            27b30c31b0de44ec486c`,
+            pinata_secret_api_key: `
+            9841eb0c77821bae3f1b53f5e7fa07633b27f67c7abe750e4ca7bfd1a3432832`,
             "Content-Type": "multipart/form-data",
           },
         });
         const ImgHash = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`;
-        contract.add(account,ImgHash);
+        console.log(ImgHash);
+        //contract.add(account,ImgHash);
+        const signer = contract.connect(provider.getSigner());
+        await signer.add(account, ImgHash); 
         alert("Successfully Image Uploaded");
         setFileName("No image selected");
         setFile(null);

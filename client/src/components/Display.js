@@ -28,10 +28,11 @@ const Display = ({ contract, account }) => {
             <img
               key={i}
               src={`https://gateway.pinata.cloud/ipfs/${item.substring(6)}`}
-              alt="new"
+              alt="DOWNLOAD"
               className="image-list"
             ></img>
           </a>
+          
         );
       });
       setData(images);
